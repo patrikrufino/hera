@@ -1,17 +1,24 @@
-version: '3.9'
-
 services:
   db:
-    image: postgres:15
+    image: postgres:17
     container_name: postgres_db
     environment:
-      POSTGRES_USER: your_user
-      POSTGRES_PASSWORD: your_password
-      POSTGRES_DB: your_database
+      POSTGRES_USER: hera
+      POSTGRES_PASSWORD: hera300619
+      POSTGRES_DB: hera
     ports:
       - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '5050:80'
 
 volumes:
   postgres_data:
